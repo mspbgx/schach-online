@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  schach:
+    image: mspbgx/schach:latest
+    ports:
+      - "8090:3000"
+    restart: unless-stopped
+    networks:
+      - npm_proxy-netzwerk
+      - default
+
+
+
+
+networks:
+  npm_proxy-netzwerk: 
+    external: true

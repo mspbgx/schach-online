@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Schach Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Lobby -->
+    <div id="lobby">
+      <h1>Schach Online</h1>
+      <div class="lobby-buttons">
+        <button id="btn-create">Neues Spiel erstellen</button>
+        <div class="divider">oder</div>
+        <div class="join-group">
+          <input type="text" id="input-code" placeholder="Spiel-Code eingeben" maxlength="6" autocapitalize="characters">
+          <button id="btn-join">Beitreten</button>
+        </div>
+      </div>
+      <p id="lobby-error" class="error"></p>
+    </div>
+
+    <!-- Waiting -->
+    <div id="waiting" class="hidden">
+      <h2>Warte auf Gegner...</h2>
+      <div class="code-display">
+        <span id="game-code"></span>
+        <button id="btn-copy" title="Code kopieren">Kopieren</button>
+      </div>
+      <div id="qr-code"></div>
+      <p>Teile diesen Code oder QR-Code mit deinem Gegner.</p>
+    </div>
+
+    <!-- Game -->
+    <div id="game" class="hidden">
+      <div id="status-bar">
+        <span id="status-text">Spiel laeuft</span>
+        <span id="game-id-display"></span>
+      </div>
+      <div id="opponent-info" class="player-info">
+        <span class="player-label" id="opponent-label">Gegner</span>
+        <div class="captured" id="opponent-captured"></div>
+      </div>
+      <div id="board-container">
+        <div id="board"></div>
+        <div id="promotion-modal" class="hidden">
+          <div class="promotion-pieces"></div>
+        </div>
+      </div>
+      <div id="player-info" class="player-info">
+        <span class="player-label" id="player-label">Du</span>
+        <div class="captured" id="player-captured"></div>
+      </div>
+      <div id="game-buttons">
+        <button id="btn-resign">Aufgeben</button>
+      </div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="gameover-overlay" class="hidden">
+      <div class="gameover-box">
+        <h2 id="gameover-title"></h2>
+        <p id="gameover-reason"></p>
+        <button id="btn-newgame">Neues Spiel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
